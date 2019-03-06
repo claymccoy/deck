@@ -85,7 +85,10 @@ export class StageArtifactSelector extends React.Component<IStageArtifactSelecto
         }
       : undefined;
 
-    const options = [this.defineNewArtifactOption, ...expectedArtifacts];
+    const options = [...expectedArtifacts];
+    if (this.props.onArtifactEdited !== undefined) {
+      options.unshift(this.defineNewArtifactOption);
+    }
 
     return (
       <>
